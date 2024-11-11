@@ -42,21 +42,6 @@ import IconDefault from './assets/icons/icon_default.svg';
 export const pageTitle = 'Data Model Navigator';
 export const brandIconSrc = 'https://raw.githubusercontent.com/CBIIT/datacommons-assets/4a3fb8e201e6ba2a858d7ec1226d2fd6ea2b5298/icdc/images/svgs/Icon-DMNav.85x85.svg';
 
-export const mdfParseHooks = [
-  // add inclusion and uiDisplay tags to properties:
-  function () {
-    const translate = { "Yes":"required", "No":"optional", "Preferred":"preferred" };
-    this.props().
-      forEach( (prop) => {
-        let val = translate[prop.is_required] || "optional";
-        this.updateTags("Inclusion", val, prop);
-        val = prop.tags().filter( (t) => t[0] == 'Labeled' ).length > 0 ? "yes" : "no";
-        this.updateTags("UI Display", val, prop);
-      });
-    return this;
-  },
-];
-
 export const facetSections = [ //facetSectionProps
   {
     section: 'Filter By Nodes',
